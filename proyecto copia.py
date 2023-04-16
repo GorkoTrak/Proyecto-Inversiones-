@@ -19,6 +19,7 @@ while True:
             2. PROYEECTO AGROPALMA S.A.S''')
             proyecto = int(input('Seleccione uno de los proyectos 1/2 -> '))
             if proyecto == 1:
+                
                 EProyecto_cacao = 'CACAO S.A.S'
                 print('El valor de aportacion como socio del proyecto CACAO S.A.S tiene un valor de $900.000 pesos.')
                 inversion =  int(input('Ingrese el valor del la inversion dentro del proyecto -> '))
@@ -48,14 +49,13 @@ while True:
                 print(f'Inversion realizada -> {INVERSIONES[usuarios]}')
                 
                 try :
-                    print(f'Proyectos Palma -> {PROYECTO_PALMA[usuarios]}')
+                    print(f'Pertenece a proyecto-> {PROYECTO_PALMA[usuarios]}')
                 except:
-                    print("No pertenece al proyecto PALMA")
+                    print("")
                 try :
-                    print(f'Proyecto Cacao -> {PROYECTO_CACAO[usuarios]}')
+                    print(f'Pertenece a proyecto -> {PROYECTO_CACAO[usuarios]}')
                 except:
-                    print('Usted no pertenece al proyecto CACAO')
-
+                    print('')
 
             return
         print('SOCIOS ACTUALES')
