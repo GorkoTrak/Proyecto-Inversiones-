@@ -9,7 +9,6 @@ PROYECTO_CACAO = {}
 while True: 
     inicio = input('Desea abrir Proyecto si/no -> '); system('cls')
     if inicio == 'si':
-        
         def nuevo_inversor():
             print("Proceso de Registro")
             llave = int(input("Ubique Documento del inversionista: "))
