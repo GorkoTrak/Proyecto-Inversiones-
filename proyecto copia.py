@@ -1,20 +1,7 @@
 from os import system 
 system ("cls")
-#RECOMENDACION -> ABRIR CODIGO HA TRAVEZ DEL PYHON NO VISUAL POR ERROR DE VISUAL AL EN LA EJECUCION
-#REMPLAZO 
-'''
-print('SOCIOS ACTUALES')
-        print(f'Nombres -> {INVERSORES}')
-        print(f'Proyecto Palma -> {PROYECTO_PALMA}')
-        print(f'Proyecto Cacao -> {PROYECTO_CACAO}')
-        print('Maimo inversores Oficiales 3')
-        print(f'cantidad de inversores en proyecto CACAO -> ')
-        print(len(PROYECTO_CACAO.keys()))
-        print('Maximo inversores Officiales 3')
-        print(f'cantidad de inversores en proyecto PALMA -> ')
-        print(len(PROYECTO_PALMA.keys()))
-        print(f'Los inversores ya verificados son {INVERSORES_VERIFICADOS}')
-'''
+#RECOMENDACION -> ABRIR CODIGO HA TRAVEZ DEL PYHON NO VISUAL POR ERROR DE VISUAL AL EN LA EJECUCION 
+
 #Manejo de inversores
 INVERSORES = {1065872355:'Jhorman Cardenas Chinchilla'}
 INVERSORES_VERIFICADOS_cacao = {}
