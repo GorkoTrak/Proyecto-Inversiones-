@@ -20,7 +20,8 @@ def nuevo_inversor():
                     print('Error en el digito')
             print('''En este momento se estan manejando Dos proyectos con un largo alcance de vision en manejo de tierras colombianas: 
 1. PROYECTO CACAO S.A.S 
-2. PROYEECTO AGROPALMA S.A.S''')
+2. PROYEECTO AGROPALMA S.A.S
+AVISO -> Solo puede realizar maximo DOS consignaciones, Inscripcion y Cancelacion de inversion.''')
             proyecto = str(input('Seleccione uno de los proyectos 1/2 -> ')); system('cls')
             if proyecto == '1':
                 EProyecto_cacao = 'CACAO S.A.S'
