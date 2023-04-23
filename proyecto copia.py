@@ -1,9 +1,10 @@
 from os import system 
 system ("cls")
-#RECOMENDACION -> ABRIR CODIGO HA TRAVEZ DEL PYHON NO VISUAL POR ERROR DE VISUAL AL EN LA EJECUCION 
+#RECOMENDACION -> ABRIR CODIGO HA TRAVEZ DEL PYHON NO VISUAL POR ERROR DE VISUAL AL EN LA EJECUCION
 
 #Manejo de inversores
-INVERSORES = {1065872355:'Jhorman Cardenas Chinchilla'}
+INVERSORES = {1065872355:['nombre: ','Jhorman Cardenas Chinchilla','Numero de telefono:','313551933','Edad:','19']}
+INVERSORES_NOMBRES = {1065872355:'Jhorman Cardenas Chinchilla'}
 INVERSORES_VERIFICADOS_cacao = {}
 INVERSORES_VERIFICADOS_palma = {}
 INVERSIONES = {1065872355: 500000}
@@ -14,7 +15,9 @@ def nuevo_inversor():
                 try:
                     print("Proceso de Registro")
                     llave = int(input("Ubique Documento del inversionista: "))
-                    valorN=input('Ingrese el nombre del inversionista: '); system('cls')
+                    valorN=input('Ingrese el nombre del inversionista: ')
+                    numero = str(input("Ingrese numero de telefono: "))
+                    edad = str(input('Ingrese su edad: '))
                     break
                 except: 
                     print('Error en el digito')
@@ -22,6 +25,7 @@ def nuevo_inversor():
 1. PROYECTO CACAO S.A.S 
 2. PROYEECTO AGROPALMA S.A.S
 AVISO -> Solo puede realizar maximo DOS consignaciones, Inscripcion y Cancelacion de inversion.''')
+            
             proyecto = str(input('Seleccione uno de los proyectos 1/2 -> ')); system('cls')
             if proyecto == '1':
                 EProyecto_cacao = 'CACAO S.A.S'
@@ -39,7 +43,8 @@ AVISO -> Solo puede realizar maximo DOS consignaciones, Inscripcion y Cancelacio
                         print(f'Su saldo pendiente para el cumplimiento de inversion es de ${valor_inversion} pesos')
                         PROYECTO_CACAO[llave] = EProyecto_cacao
                         INVERSIONES[llave] = inversion
-                        INVERSORES[llave] = valorN
+                        INVERSORES[llave] = ['Nombre: ',valorN,'Numero de telefono:',numero,'Edad:',edad]
+                        INVERSORES_NOMBRES[llave] = valorN
                         print('')
                         enter = str(input('oprima una tecla cualquiera para continuar: ')); system('cls')
                         if enter:
@@ -55,10 +60,11 @@ AVISO -> Solo puede realizar maximo DOS consignaciones, Inscripcion y Cancelacio
                             print('Usted a cancelado el pago De inversion completo'); print('Bienvenido al proyecto CACAO S.A.S')
                             PROYECTO_CACAO[llave] = EProyecto_cacao
                             INVERSIONES[llave] = inversion
-                            INVERSORES[llave] = valorN
+                            INVERSORES[llave] = ['Nombre: ',valorN,'Numero de telefono:',numero,'Edad:',edad]
                         elif len(INVERSORES_VERIFICADOS_cacao.keys()) >=3:
                             print('Ya se ha alcanzado el maximo de inversores para este proyecto')
-                            INVERSORES[llave] = valorN
+                            INVERSORES[llave] = ['Nombre: ',valorN,'Numero de telefono:',numero,'Edad:',edad]
+                            INVERSORES_NOMBRES[llave] = valorN
                             del(INVERSORES[llave])
                         enter = str(input('oprima una tecla cualquiera para continuar: ')); system('cls')
                         if enter:
@@ -81,7 +87,8 @@ AVISO -> Solo puede realizar maximo DOS consignaciones, Inscripcion y Cancelacio
                         print(f'Su saldo pendiente para el cumplimiento de inversion es de ${valor_inversion} pesos')
                         PROYECTO_PALMA[llave] = EProyecto_palma
                         INVERSIONES[llave] = inversion
-                        INVERSORES[llave] = valorN
+                        INVERSORES[llave] = ['Nombre: ',valorN,'Numero de telefono:',numero,'Edad:',edad]
+                        INVERSORES_NOMBRES[llave] = valorN
                         print('')
                         enter = str(input('oprima una tecla cualquiera para continuar: ')); system('cls')
                         if enter:
@@ -97,9 +104,11 @@ AVISO -> Solo puede realizar maximo DOS consignaciones, Inscripcion y Cancelacio
                             print('Usted a cancelado el pago De inversion completo'); print('Bienvenido al proyecto AGROPALMA S.A.S')
                             PROYECTO_PALMA[llave] = EProyecto_palma
                             INVERSIONES[llave] = inversion
-                            INVERSORES[llave] = valorN
+                            INVERSORES[llave] = ['Nombre: ',valorN,'Numero de telefono:',numero,'Edad:',edad]
+                            INVERSORES_NOMBRES[llave] = valorN
                         elif len(INVERSORES_VERIFICADOS_palma.keys()) >=2:
-                            INVERSORES[llave] = valorN
+                            INVERSORES[llave] = ['Nombre: ',valorN,'Numero de telefono:',numero,'Edad:',edad]
+                            INVERSORES_NOMBRES[llave] = valorN
                             print('Ya se ha alcanzado el maximo de inversores para este proyecto')
                             del(INVERSORES[llave])
                         enter = str(input('oprima una tecla cualquiera para continuar: ')); system('cls')
@@ -109,133 +118,134 @@ AVISO -> Solo puede realizar maximo DOS consignaciones, Inscripcion y Cancelacio
             return
 def login():
     while True:
-        try:
-            usuarios = int(input('Dijite su documento de identidad: '))
             try:
-                if INVERSORES_VERIFICADOS_cacao[usuarios]:
-                    print('USTED ES SOCIO EN EL PROYECTO CACAO S.A.S')
-                    break
-            except:
-                print('')
-            try:
-                if INVERSORES_VERIFICADOS_palma[usuarios]:
-                    print('USTED ES SOCIO EN EL PROYECTO AGROPALMA S.A.S')
-                    break
-            except:
-                print('')
-            if INVERSORES[usuarios]:
-                print('Bienvenido')
-                print(f'Nombre -> {INVERSORES[usuarios]}')
-                print(f'Inversion realizada -> {INVERSIONES[usuarios]}')
-                try :
-                    print(f'Pertenece a proyecto-> {PROYECTO_PALMA[usuarios]}')
-                except:
-                    print("")
-                try :
-                    print(f'Pertenece a proyecto -> {PROYECTO_CACAO[usuarios]}')
-                    
+                usuarios = int(input('Dijite su documento de identidad: '))
+                try:
+                    if INVERSORES_VERIFICADOS_cacao[usuarios]:
+                        print('USTED ES SOCIO EN EL PROYECTO CACAO S.A.S')
+                        break
                 except:
                     print('')
-                while True:
-                    conocer_saldo = str(input('Desea conocer su saldo pendiente? si/no: ')).lower()
-                    if conocer_saldo == 'si':
-                        try:
-                            if PROYECTO_CACAO[usuarios]:
-                                saldo_pendiente = 900000 -INVERSIONES[usuarios]
-                                print(f'su saldo pendiente es de ${saldo_pendiente}')
-                                while True:
-                                    opcion_inversion = str(input('Desea cancelar su saldo? si/no: ')).lower(); print('''''')
-                                    if opcion_inversion == 'si':
-                                        while True:
-                                            try:
-                                                if len(INVERSORES_VERIFICADOS_cacao.keys()) >= 3:
-                                                    print('El limite maximo de INVERSORES en PROYECTO CACA S.A.S FUE ALCANZADO')
-                                                    retiro = str(input('Ingrese su CUENTA BANCARIA para la debolucion de su dinero: '))
-                                                    if retiro:
-                                                        print('Muchas Gracias por participar en esta EMPRESA DE INVERSIONES'); print('Su consignacion legara a su ceunta en las proximas horas')
-                                                        del(INVERSORES[usuarios])
-                                                    break
-                                            except:
-                                                print('')
-                                            try:
-                                                nueva_inversion = int(input('Ingrese el valor de la nueva inversion: '))
-                                                if nueva_inversion == saldo_pendiente:
-                                                    fin_saldo = nueva_inversion + INVERSIONES[usuarios]
-                                                    print('Ya ust ha acumulado el total de la inversion')
-                                                    print('Bienvenido al PROYECTO <33')
-                                                    INVERSIONES[usuarios] = fin_saldo
-                                                    INVERSORES_VERIFICADOS_cacao[usuarios] = PROYECTO_CACAO[usuarios]
-                                                    
-                                                    break
-                                                else:
-                                                    print('Error, el nuevo saldo no es suficiente')
-                                            except:
-                                                print('Error en el digito')
-                                    elif opcion_inversion == 'no':
-                                        print('')
-                                        break
-                                    
-                                    else:
-                                        print('Error, dijito incorrecto')
-                                    break
-                                break
-                            else:   
-                                print('')
-                            
-                        except:
-                            print('')
-                            
-                        try:
-                            if PROYECTO_PALMA[usuarios]:
-                                saldo_pendiente = 1200000 - INVERSIONES[usuarios]
-                                print(f'su saldo pendiente es de {saldo_pendiente}')
-                                while True:
-                                    opcion_inversion = input('Desea cancelar su saldo? si/no: ')
-                                    if opcion_inversion == 'si':
-                                        while True:
-                                            try:
-                                                if len(INVERSORES_VERIFICADOS_palma.keys()) >= 2:
-                                                    print('El limite maximo de INVERSORES en PROYECTO AGROPALMA S.A.S FUE ALCANZADO')
-                                                    retiro = str(input('Ingrese su CUENTA BANCARIA para la debolucion de su dinero: '))
-                                                    if retiro:
-                                                        print('Muchas Gracias por participar en esta EMPRESA DE INVERSIONES'); print('Su consignacion legara a su ceunta en las proximas horas')
-                                                        del(INVERSORES[usuarios])
-                                                    break
-                                            except:
-                                                print('')
-                                            try:
-                                                nueva_inversion = int(input('Ingresar el valor de la nueva inversion: '))
-                                                if nueva_inversion == saldo_pendiente:
+                try:
+                    if INVERSORES_VERIFICADOS_palma[usuarios]:
+                        print('USTED ES SOCIO EN EL PROYECTO AGROPALMA S.A.S')
+                        break
+                except:
+                    print('')
+                if INVERSORES[usuarios]:
+                    print('Bienvenido')
+                    for key in INVERSORES[usuarios]:
+                        print(key)
+                    print(f'Inversion realizada -> {INVERSIONES[usuarios]}')
+                    try :
+                        print(f'Pertenece a proyecto-> {PROYECTO_PALMA[usuarios]}')
+                    except:
+                        print("")
+                    try :
+                        print(f'Pertenece a proyecto -> {PROYECTO_CACAO[usuarios]}')
+                        
+                    except:
+                        print('')
+                    while True:
+                        conocer_saldo = str(input('Desea conocer su saldo pendiente? si/no: ')).lower()
+                        if conocer_saldo == 'si':
+                            try:
+                                if PROYECTO_CACAO[usuarios]:
+                                    saldo_pendiente = 900000 -INVERSIONES[usuarios]
+                                    print(f'su saldo pendiente es de ${saldo_pendiente}')
+                                    while True:
+                                        opcion_inversion = str(input('Desea cancelar su saldo? si/no: ')).lower(); print('''''')
+                                        if opcion_inversion == 'si':
+                                            while True:
+                                                try:
+                                                    if len(INVERSORES_VERIFICADOS_cacao.keys()) >= 3:
+                                                        print('El limite maximo de INVERSORES en PROYECTO CACA S.A.S FUE ALCANZADO')
+                                                        retiro = str(input('Ingrese su CUENTA BANCARIA para la debolucion de su dinero: '))
+                                                        if retiro:
+                                                            print('Muchas Gracias por participar en esta EMPRESA DE INVERSIONES'); print('Su consignacion legara a su ceunta en las proximas horas')
+                                                            del(INVERSORES[usuarios])
+                                                        break
+                                                except:
+                                                    print('')
+                                                try:
+                                                    nueva_inversion = int(input('Ingrese el valor de la nueva inversion: '))
+                                                    if nueva_inversion == saldo_pendiente:
                                                         fin_saldo = nueva_inversion + INVERSIONES[usuarios]
-                                                        print('ya ust ha acumulado el total de la inversion'); print('Bienvenido al proyecto <33')
+                                                        print('Ya ust ha acumulado el total de la inversion')
+                                                        print('Bienvenido al PROYECTO <33')
                                                         INVERSIONES[usuarios] = fin_saldo
-                                                        INVERSORES_VERIFICADOS_palma[usuarios] = PROYECTO_PALMA[usuarios]
+                                                        INVERSORES_VERIFICADOS_cacao[usuarios] = PROYECTO_CACAO[usuarios]
                                                         
                                                         break
-                                                else:
-                                                    print('error, el nuevo saldo no es sufciente')
-                                            except:
-                                                print('Error en el digito')
-                                    elif opcion_inversion == 'no':
-                                        print('')
+                                                    else:
+                                                        print('Error, el nuevo saldo no es suficiente')
+                                                except:
+                                                    print('Error en el digito')
+                                        elif opcion_inversion == 'no':
+                                            print('')
+                                            break
+                                        
+                                        else:
+                                            print('Error, dijito incorrecto')
                                         break
-                                    else:
-                                        print('error, dijito incorrecto')    
-                                    break 
-                                break        
-                            else:
+                                    break
+                                else:   
+                                    print('')
+                                
+                            except:
                                 print('')
-                        except:
+                                
+                            try:
+                                if PROYECTO_PALMA[usuarios]:
+                                    saldo_pendiente = 1200000 - INVERSIONES[usuarios]
+                                    print(f'su saldo pendiente es de {saldo_pendiente}')
+                                    while True:
+                                        opcion_inversion = input('Desea cancelar su saldo? si/no: ')
+                                        if opcion_inversion == 'si':
+                                            while True:
+                                                try:
+                                                    if len(INVERSORES_VERIFICADOS_palma.keys()) >= 2:
+                                                        print('El limite maximo de INVERSORES en PROYECTO AGROPALMA S.A.S FUE ALCANZADO')
+                                                        retiro = str(input('Ingrese su CUENTA BANCARIA para la debolucion de su dinero: '))
+                                                        if retiro:
+                                                            print('Muchas Gracias por participar en esta EMPRESA DE INVERSIONES'); print('Su consignacion legara a su ceunta en las proximas horas')
+                                                            del(INVERSORES[usuarios])
+                                                        break
+                                                except:
+                                                    print('')
+                                                try:
+                                                    nueva_inversion = int(input('Ingresar el valor de la nueva inversion: '))
+                                                    if nueva_inversion == saldo_pendiente:
+                                                            fin_saldo = nueva_inversion + INVERSIONES[usuarios]
+                                                            print('ya ust ha acumulado el total de la inversion'); print('Bienvenido al proyecto <33')
+                                                            INVERSIONES[usuarios] = fin_saldo
+                                                            INVERSORES_VERIFICADOS_palma[usuarios] = PROYECTO_PALMA[usuarios]
+                                                            
+                                                            break
+                                                    else:
+                                                        print('error, el nuevo saldo no es sufciente')
+                                                except:
+                                                    print('Error en el digito')
+                                        elif opcion_inversion == 'no':
+                                            print('')
+                                            break
+                                        else:
+                                            print('error, dijito incorrecto')    
+                                        break 
+                                    break        
+                                else:
+                                    print('')
+                            except:
+                                print('')
+                        elif conocer_saldo == 'no':
                             print('')
-                    elif conocer_saldo == 'no':
-                        print('')
-                        break
-                    else:
-                        print('Error, dijito incorrecto')
-                break
-            break 
-        except:
-            print('Error, dijito equivocado')
+                            break
+                        else:
+                            print('Error, dijito incorrecto')
+                    break
+                break 
+            except:
+                print('')
         
     return
 while True:
@@ -249,9 +259,8 @@ while True:
             
             print(''''''); print('inversores actuales')
             print('------------------------')
-            for key,value in INVERSORES.items():
-                print(key, ' -> ', value) 
-            print('------------------------')
+            for key,value in INVERSORES_NOMBRES.items():
+                print(key, ' -> ', value)
 
             print(''''''); print('inversiones actuales')
             print('------------------------')
