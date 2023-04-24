@@ -251,55 +251,67 @@ def login():
 while True:
     inicio = input('Desea abrir Proyecto si/no -> ').lower(); system('cls')
     if inicio == 'si':
-            while True:
-                if inicio == 'si':
-                    print('')
-                    print("*"*60)
-                    break
-            
-            print(''''''); print('inversores actuales')
-            print('------------------------')
-            for key,value in INVERSORES_NOMBRES.items():
-                print(key, ' -> ', value)
+                while True:
+                    print('1. Concocer datos de inversiones')
+                    print('2. Secion de inicio y registro')
+                    Seleccion = str(input(' Seleccione una opcion -> '))
+                    if Seleccion == '1':
+                        while True:
+                            if inicio == 'si':
+                                print('')
+                                print("*"*60)
+                                break
 
-            print(''''''); print('inversiones actuales')
-            print('------------------------')
-            for key,value in INVERSIONES.items():
-                print(key, ' -> ', value) 
-            print('------------------------')
+                        print(''''''); print('inversores actuales')
+                        print('------------------------')
+                        for key,value in INVERSORES_NOMBRES.items():
+                            print(key, ' -> ', value)
 
-            print(''''''); print('Maximo SOCIOS PROYECTO AGROPALMA S.A.S -> 2')
+                        print(''''''); print('inversiones actuales')
+                        print('------------------------')
+                        for key,value in INVERSIONES.items():
+                            print(key, ' -> ', value) 
+                        print('------------------------')
 
-            print(''''''); print('inversores verificados de palma')
-            print('------------------------')
-            for key,value in INVERSORES_VERIFICADOS_palma.items():
-                print(key, ' -> ', value)
-            print('------------------------');print('''''')
-            print(''''''); print('Maximo SOCIOS PROYECTO CACAO S.A.S -> 3')
-            print(''''''); print('inversores verificados de cacao')
-            print('------------------------')
+                        print(''''''); print('Maximo SOCIOS PROYECTO AGROPALMA S.A.S -> 2')
 
-            for key,value in INVERSORES_VERIFICADOS_cacao.items():
-                print(key, ' -> ', value)
-            print('------------------------');print('''''')
-            
-            print(f'cantidad de inversores en proyecto CACAO -> ')
-            print(len(PROYECTO_CACAO.keys()))
-            
-            print(f'cantidad de inversores en proyecto PALMA -> ')
-            print(len(PROYECTO_PALMA.keys()))
-            while True:
-                inicio1 = str(input("Ya esta registrado?, si lo es ubica 'INICIO' y si es nuevo ubica 'REGISTRAR': ")).lower(); system('cls')
-                if inicio1 == 'inicio':
-                    login()
-                    break
-                elif inicio1 == 'registrar':
-                    nuevo_inversor()
-                    break
-                else:
-                    print('''Error en el digito
-                    
-                ''')
+                        print(''''''); print('inversores verificados de palma')
+                        print('------------------------')
+                        for key,value in INVERSORES_VERIFICADOS_palma.items():
+                            print(key, ' -> ', value)
+                        print('------------------------');print('''''')
+                        print(''''''); print('Maximo SOCIOS PROYECTO CACAO S.A.S -> 3')
+                        print(''''''); print('inversores verificados de cacao')
+                        print('------------------------')
+
+                        for key,value in INVERSORES_VERIFICADOS_cacao.items():
+                            print(key, ' -> ', value)
+                        print('------------------------');print('''''')
+                        
+                        print(f'cantidad de inversores en proyecto CACAO -> ')
+                        print(len(PROYECTO_CACAO.keys()))
+                        
+                        print(f'cantidad de inversores en proyecto PALMA -> ')
+                        print(len(PROYECTO_PALMA.keys()))
+                        enter = str(input('Oprima enter para continuar: ')); system('cls')
+                        if enter:
+                            print('')
+                        break
+                    elif Seleccion == '2':
+                        while True:
+                            inicio1 = str(input("Ya esta registrado?, si lo es ubica 'INICIO' y si es nuevo ubica 'REGISTRAR': ")).lower(); system('cls')
+                            if inicio1 == 'inicio':
+                                login()
+                                break
+                            elif inicio1 == 'registrar':
+                                nuevo_inversor()
+                                break
+                            else:
+                                print('''Error en el digito
+                                
+                            ''')
+                    else: 
+                        print('Error, seleccion incorrecta')
     elif inicio == 'no':
         print("Programa cerrado")
         break
